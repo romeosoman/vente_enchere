@@ -6,9 +6,7 @@ from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
 import os
 
-load_dotenv() 
-
-
+load_dotenv()
 app = Flask(__name__)
 app.secret_key = 'ma_cle_secrete_123'
 
@@ -327,4 +325,5 @@ def supprimer_bien(bien_id):
     return redirect(url_for('gerer_biens'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
